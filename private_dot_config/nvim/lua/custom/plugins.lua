@@ -14,6 +14,8 @@ local plugins = {
         "ruff",
         "bash-debug-adapter",
         "bash-language-server",
+        "typescript-language-server",
+        "eslint-lsp",
         "yaml-language-server",
         "stylua",
       },
@@ -27,13 +29,21 @@ local plugins = {
     },
   },
   {
-    "christoomey/vim-tmux-navigator",
+    "towolf/vim-helm",
     lazy = false,
   },
   {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
+    "b0o/schemastore.nvim",
+    lazy = false,
   },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  --  {
+  --    "Exafunction/codeium.vim",
+  --    event = "BufEnter",
+  --  },
   {
     "mfussenegger/nvim-dap",
     init = function()
@@ -98,7 +108,7 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = { "go", "python", "lua", "bash", "zsh" },
+    ft = { "go", "python", "lua", "bash", "zsh", "javascript", "typescript" },
     opts = function()
       return require "custom.configs.null-ls"
     end,

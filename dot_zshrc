@@ -84,7 +84,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete zsh-vi-mode)
 # plugins=(git zsh-syntax-highlighting fast-syntax-highlighting zsh-autosuggestions zsh-vi-mode)
-plugins=(git fast-syntax-highlighting zsh-autosuggestions zsh-vi-mode)
+plugins=(zoxide git fast-syntax-highlighting zsh-autosuggestions zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,6 +115,8 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 #alias nvim="lvim"
 alias vim="nvim"
+alias mtr="cd ~/Verint/vcp-metering2/; tmux"
+alias cd="z"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -125,3 +127,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 export PATH="$PATH:/usr/local/go/bin" 
 
+export MC_SKIN=onedark

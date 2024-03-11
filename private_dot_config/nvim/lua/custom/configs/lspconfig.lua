@@ -28,6 +28,22 @@ lspconfig.gopls.setup {
   },
 }
 
+if not config.helm_ls then
+  config.helm_ls = {
+    default_config = {
+      cmd = { "helm_ls", "serve" },
+      filetypes = { "helm" },
+      root_dir = function(fname)
+        return lspconfig.util.root_pattern "Chart.yaml"(fname)
+      end,
+    },
+  }
+end
+lspconfig.helm_ls.setup {
+  filetypes = { "helm" },
+  cmd = { "helm_ls", "serve" },
+}
+
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -40,15 +56,35 @@ lspconfig.lua_ls.setup {
   filetypes = { "lua" },
 }
 
-lspconfig.yamlls.setup {
+lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "yaml" },
-  settings = {
-    yaml = {
-      schemas = {
-        ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.yaml"] = "/*",
-      },
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
     },
   },
 }
+
+lspconfig.jsonls.setup {
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
+
+-- lspconfig.yamlls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "yaml" },
+--   settings = {
+--     yaml = {
+--       schemaStore = {
+--         enable = true,
+--       },
+--       schemas = require("schemastore").yaml.schemas(),
+--     },
+--   },
+-- }
