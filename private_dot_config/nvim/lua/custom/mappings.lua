@@ -5,6 +5,7 @@ M.general = {
     ["<leader>gg"] = { "<cmd> :LazyGit<CR>", "Toggle LazyGit" },
     ["<F1>"] = { "<Esc>" },
     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "Live grep under cursor" },
     ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Window Left" },
     ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window Down" },
     ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window Up" },
