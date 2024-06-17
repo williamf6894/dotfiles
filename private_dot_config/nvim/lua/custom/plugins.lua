@@ -29,6 +29,14 @@ local plugins = {
     },
   },
   {
+    "folke/neodev.nvim",
+    opts = {},
+  },
+  {
+    "mortepau/codicons.nvim",
+    opts = {},
+  },
+  {
     "towolf/vim-helm",
     lazy = false,
   },
@@ -40,10 +48,24 @@ local plugins = {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
-  --  {
-  --    "Exafunction/codeium.vim",
-  --    event = "BufEnter",
-  --  },
+  {
+    "Exafunction/codeium.nvim",
+    lazy = true,
+    event = "BufEnter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup {}
+      local cmp = require "cmp"
+      local cmpconfig = cmp.get_config()
+      table.insert(cmpconfig.sources, {
+        name = "codeium",
+      })
+      cmp.setup(cmpconfig)
+    end,
+  },
   {
     "mfussenegger/nvim-dap",
     init = function()
@@ -83,11 +105,23 @@ local plugins = {
   },
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = "mfussenegger/nvim-dap",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+      "mortepau/codicons.nvim",
+    },
     config = function()
       local dap = require "dap"
       local dapui = require "dapui"
       dapui.setup()
+      require("neodev").setup {
+        library = {
+          plugins = {
+            "nvim-dap-ui",
+          },
+          types = true,
+        },
+      }
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
@@ -97,6 +131,8 @@ local plugins = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
+      vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "", linehl = "", numhl = "" })
     end,
   },
   {

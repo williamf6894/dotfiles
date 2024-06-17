@@ -14,6 +14,25 @@ M.general = {
   i = {
     ["<F1>"] = { "<Esc>" },
   },
+  t = {
+    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+    ["<C-h>"] = {
+      vim.api.nvim_replace_termcodes("<C-\\><C-N> <C-h>", true, true, true),
+      "Escape terminal mode, Window Left",
+    },
+    ["<C-j>"] = {
+      vim.api.nvim_replace_termcodes("<C-\\><C-N> <C-j>", true, true, true),
+      "Escape terminal mode, Window Down",
+    },
+    ["<C-k>"] = {
+      vim.api.nvim_replace_termcodes("<C-\\><C-N> <C-k>", true, true, true),
+      "Escape terminal mode, Window Up",
+    },
+    ["<C-l>"] = {
+      vim.api.nvim_replace_termcodes("<C-\\><C-N> <C-l>", true, true, true),
+      "Escape terminal mode, Window Right",
+    },
+  },
 }
 
 M.dap = {
@@ -37,7 +56,7 @@ M.dap = {
       end,
       "Debug start",
     },
-    ["<leader>dgs"] = {
+    ["<leader>gs"] = {
       function()
         require("dap").continue()
       end,
@@ -49,13 +68,13 @@ M.dap = {
       end,
       "Debug Step into",
     },
-    ["<leader>dso"] = {
+    ["<leader>so"] = {
       function()
         require("dap").step_over()
       end,
       "Debug Step Over",
     },
-    ["<leader>dsO"] = {
+    ["<leader>sO"] = {
       function()
         require("dap").step_out()
       end,
@@ -67,6 +86,12 @@ M.dap = {
 M.dap_go = {
   plugin = true,
   n = {
+    ["<leader>dgs"] = {
+      function()
+        require("dap").continue()
+      end,
+      "Debug go start",
+    },
     ["<leader>dgt"] = {
       function()
         require("dap-go").debug_test()
