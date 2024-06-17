@@ -28,6 +28,8 @@ fi
 
 
 # Added by Toolbox App
-export PATH="$PATH:/home/will/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:/home/verint/.local/share/JetBrains/Toolbox/scripts"
 export PATH=$PATH:/usr/local/go/bin
+# Added cargo path
+export PATH="$HOME/.cargo/bin:$PATH"
 
