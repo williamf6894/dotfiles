@@ -71,7 +71,7 @@ source "$ZSH/tools/check_for_upgrade.sh"
 # Initializes Oh My Zsh
 
 # add a function path
-fpath=("$ZSH/functions" "$ZSH/completions" $fpath)
+fpath=($ZSH/{functions,completions} $ZSH_CUSTOM/{functions,completions} $fpath)
 
 # Load all stock functions (from $fpath files) called below.
 autoload -U compaudit compinit zrecompile
@@ -152,7 +152,7 @@ unset zcompdump_revision zcompdump_fpath zcompdump_refresh
 # zcompile the completion dump file if the .zwc is older or missing.
 if command mkdir "${ZSH_COMPDUMP}.lock" 2>/dev/null; then
   zrecompile -q -p "$ZSH_COMPDUMP"
-  command rm -rf "$ZSH_COMPDUMP.zwc.old" "${ZSH_COMPDUMP}.lock" 
+  command rm -rf "$ZSH_COMPDUMP.zwc.old" "${ZSH_COMPDUMP}.lock"
 fi
 
 _omz_source() {
