@@ -73,6 +73,10 @@ COMPLETION_WAITING_DOTS="true"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 HIST_STAMPS="dd/mm/yyyy"
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt appendhistory
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -82,8 +86,6 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete zsh-vi-mode)
-# plugins=(git zsh-syntax-highlighting fast-syntax-highlighting zsh-autosuggestions zsh-vi-mode)
 plugins=(zoxide git fast-syntax-highlighting zsh-autosuggestions zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
@@ -118,6 +120,9 @@ alias vim="nvim"
 alias lg="lazygit"
 alias mtr="cd ~/Verint/vcp-metering2/; tmux"
 alias cd="z"
+
+source <(fzf --zsh)
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

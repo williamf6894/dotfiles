@@ -136,6 +136,12 @@ local plugins = {
     end,
   },
   {
+    "ckipp01/nvim-jenkinsfile-linter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
@@ -144,7 +150,7 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = { "go", "python", "lua", "bash", "zsh", "javascript", "typescript" },
+    ft = { "go", "python", "lua", "bash", "zsh", "javascript", "typescript", "groovy", "jenkinsfile" },
     opts = function()
       return require "custom.configs.null-ls"
     end,
