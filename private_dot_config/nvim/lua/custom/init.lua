@@ -2,6 +2,8 @@ local opt = vim.opt
 
 opt.relativenumber = true
 
+opt.shell = "/bin/zsh"
+
 --search
 opt.hlsearch = false
 opt.incsearch = true
